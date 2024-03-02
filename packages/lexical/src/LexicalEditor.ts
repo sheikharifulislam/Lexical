@@ -418,6 +418,7 @@ export function createEditor(editorConfig?: CreateEditorArgs): LexicalEditor {
     config.namespace ||
     (parentEditor !== null ? parentEditor._config.namespace : createUID());
   const initialEditorState = config.editorState;
+  console.log('from config', config.nodes);
   const nodes = [
     RootNode,
     TextNode,
@@ -426,6 +427,7 @@ export function createEditor(editorConfig?: CreateEditorArgs): LexicalEditor {
     ParagraphNode,
     ...(config.nodes || []),
   ];
+
   const {onError, html} = config;
   const isEditable = config.editable !== undefined ? config.editable : true;
   let registeredNodes: Map<string, RegisteredNode>;
@@ -651,7 +653,6 @@ export class LexicalEditor {
     this._window = null;
     this._blockCursorElement = null;
   }
-
   /**
    *
    * @returns true if the editor is currently in "composition" mode due to receiving input

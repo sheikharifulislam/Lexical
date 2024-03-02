@@ -7,5 +7,10 @@
       "source.fixAll.eslint",
       "source.fixAll.format"
     ]
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.tslint": "explicit",
+    "source.organizeImports": "never"
   }
 }

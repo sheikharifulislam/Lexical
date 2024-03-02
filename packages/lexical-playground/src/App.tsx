@@ -6,11 +6,22 @@
  *
  */
 
-import {$createLinkNode} from '@lexical/link';
+import type {Klass} from 'lexical';
+
+import {$createLinkNode, AutoLinkNode, LinkNode} from '@lexical/link';
 import {$createListItemNode, $createListNode} from '@lexical/list';
 import {LexicalComposer} from '@lexical/react/LexicalComposer';
-import {$createHeadingNode, $createQuoteNode} from '@lexical/rich-text';
-import {$createParagraphNode, $createTextNode, $getRoot} from 'lexical';
+import {
+  $createHeadingNode,
+  $createQuoteNode,
+  HeadingNode,
+} from '@lexical/rich-text';
+import {
+  $createParagraphNode,
+  $createTextNode,
+  $getRoot,
+  LexicalNode,
+} from 'lexical';
 import * as React from 'react';
 
 import {isDevPlayground} from './appSettings';
@@ -125,6 +136,7 @@ function App(): JSX.Element {
       : prepopulatedRichText,
     namespace: 'Playground',
     nodes: [...PlaygroundNodes],
+    // nodes: [HeadingNode, LinkNode, AutoLinkNode],
     onError: (error: Error) => {
       throw error;
     },
@@ -145,11 +157,11 @@ function App(): JSX.Element {
               <Editor />
             </div>
             <Settings />
-            {isDevPlayground ? <DocsPlugin /> : null}
+            {/* {isDevPlayground ? <DocsPlugin /> : null}
             {isDevPlayground ? <PasteLogPlugin /> : null}
             {isDevPlayground ? <TestRecorderPlugin /> : null}
 
-            {measureTypingPerf ? <TypingPerfPlugin /> : null}
+            {measureTypingPerf ? <TypingPerfPlugin /> : null} */}
           </SharedAutocompleteContext>
         </TableContext>
       </SharedHistoryContext>
